@@ -1,3 +1,4 @@
+package GUI;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,11 +39,11 @@ public class MenuView extends JFrame implements WindowListener {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bienvenido Al Sistema");
-        URL iconURL = getClass().getResource("resources/images/iconavion.png");
+        URL iconURL = getClass().getResource("images/iconavion.png");
         ImageIcon icon = new ImageIcon(iconURL);
         setIconImage(icon.getImage());
 
-        fondoLabel.setIcon(new javax.swing.ImageIcon(this.getClass().getResource("resources/images/RegistrationN3.png")));
+        fondoLabel.setIcon(new javax.swing.ImageIcon(this.getClass().getResource("images/RegistrationN3.png")));
 
         fileMenu.setText("File");
 
