@@ -1,30 +1,61 @@
+/**
+ * Representa un Boleto.
+ *
+ * @author Ervey Guerrero Gómez
+ * @author David Hernandéz López
+ * @author Daniel Sánchez Vázquez 
+ * @author Alejandro Tonatiuh García Espinoza 
+ */
+
 package Modelo;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public abstract class Boleto {
-
-    protected String nombrePasajero;
-    protected int edadPasajero;
-    protected String generoPasajero;
+    public static int numBoletos;
+    
     protected EnumClase clasePasajero;
+    protected EnumVuelo tipoVuelo;
+    protected int edadPasajero;
+    protected int folio;
     protected int numAsiento;
     protected int numVuelo;
     protected String aerolinea;
     protected String destino;
-    protected EnumVuelo tipoVuelo;
+    protected String generoPasajero;
+    protected String nombrePasajero;
 
-
-    public Boleto(String nombrePasajero, int edadPasajero, String generoPasajero, EnumClase clasePasajero,
-                  int numAsiento, int numVuelo, String aerolinea, String destino) {
-        this.nombrePasajero = nombrePasajero;
-        this.edadPasajero = edadPasajero;
-        this.generoPasajero = generoPasajero;
+    /**
+     * Constructor de la clase.
+     *
+     * @param nombrePasajero	el nombre del pasajero.
+     * @param edadPasajero	la edad del pasajero.
+     * @param generoPasajero	el género del pasajero.
+     * @param clasePasajero		la clase en la que vuela el pasajero.
+     * @param numAsiento	el asiento asignado al pasajero.
+     * @param numVuelo	el número de vuelo.
+     * @param aerolinea		la aerolínea.
+     * @param destino	el destino del pasajero.
+     */
+    public Boleto(String nombrePasajero,
+		    int edadPasajero,
+		    String generoPasajero,
+		    EnumClase clasePasajero,
+		    int numAsiento,
+		    int numVuelo,
+		    String aerolinea,
+		    String destino) {
         this.clasePasajero = clasePasajero;
+        this.edadPasajero = edadPasajero;
+	this.folio = ++Boleto.numBoletos;
         this.numAsiento = numAsiento;
         this.numVuelo = numVuelo;
         this.aerolinea = aerolinea;
         this.destino = destino;
+        this.generoPasajero = generoPasajero;
+        this.nombrePasajero = nombrePasajero;
     }
 
     /**
@@ -115,105 +146,23 @@ public abstract class Boleto {
         return this.tipoVuelo;
     }
 
-}
-
-interface BoletoDao {
-    void guardarBoleto(Boleto boleto);
-    Boleto cargarBoleto(String nombrePasajero, EnumVuelo tipoVuelo);
-}
-
-
-class BoletoDaoImp implements BoletoDao {
-    @Override
-    public Boleto cargarBoleto(String nombrePasajero, EnumVuelo tipoVuelo) {
-        int edadPasajero;
-        String generoPasajero;
-        EnumClase clasePasajero;
-        int numAsiento;
-        int numVuelo;
-        String aerolinea;
-        String destino;
-
-        String vuelo = tipoVuelo.toString().toLowerCase();
-        nombrePasajero = nombrePasajero.replaceAll(" ", "");
-        String fichero = vuelo + '_' + nombrePasajero + ".vuelo";
-        try {
-            DataInputStream entrada = new DataInputStream(new BufferedInputStream(new FileInputStream(fichero)));
-            nombrePasajero = entrada.readUTF();
-            edadPasajero = entrada.readInt();
-            generoPasajero = entrada.readUTF();
-            clasePasajero = EnumClase.valueOf(entrada.readUTF());
-            numAsiento = entrada.readInt();
-            numVuelo = entrada.readInt();
-            aerolinea = entrada.readUTF();
-            destino = entrada.readUTF();
-
-            switch (tipoVuelo) {
-                case INTERNACIONAL:
-                    int numPasaporte = entrada.readInt();
-                    EnumVisa tipoVisa = EnumVisa.valueOf(entrada.readUTF());
-                    int añosVigenciaVisa = entrada.readInt();
-
-                    return new BoletoInternacional(nombrePasajero,
-                            edadPasajero,
-                            generoPasajero,
-                            clasePasajero,
-                            numAsiento,
-                            numVuelo,
-                            aerolinea,
-                            destino,
-                            numPasaporte,
-                            tipoVisa,
-                            añosVigenciaVisa);
-                case NACIONAL:
-                    String curp = entrada.readUTF();
-
-                    return new BoletoNacional(nombrePasajero,
-                            edadPasajero,
-                            generoPasajero,
-                            clasePasajero,
-                            numAsiento,
-                            numVuelo,
-                            aerolinea,
-                            destino,
-                            curp);
-            }
-        } catch (IOException e) {
-            return null;
-        }
-        return null;
-    }
-    @Override
-    public void guardarBoleto(Boleto boleto) {
-        String tipoVuelo = boleto.getTipoVuelo().toString().toLowerCase();
-        String nombrePasajero = boleto.getNombrePasajero().replaceAll(" ", "");
-        String fichero = tipoVuelo + '_' + nombrePasajero + ".vuelo";
-        try {
-            DataOutputStream salida = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(fichero)));
-
-            salida.writeUTF(boleto.getNombrePasajero());
-            salida.writeInt(boleto.getEdadPasajero());
-            salida.writeUTF(boleto.getGeneroPasajero());
-            salida.writeUTF(boleto.getClasePasajero().toString());
-            salida.writeInt(boleto.getNumAsiento());
-            salida.writeInt(boleto.getNumVuelo());
-            salida.writeUTF(boleto.getAerolinea());
-            salida.writeUTF(boleto.getDestino());
-
-            switch (boleto.getTipoVuelo()) {
-                case INTERNACIONAL:
-                    salida.writeInt(((BoletoInternacional)boleto).getNumPasaporte());
-                    salida.writeUTF(((BoletoInternacional)boleto).getTipoVisa().toString());
-                    salida.writeInt(((BoletoInternacional)boleto).getAñosVigenciaVisa());
-                    break;
-                case NACIONAL:
-                    salida.writeUTF(((BoletoNacional)boleto).getCurpPasajero());
-                    break;
-
-            }
-            salida.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    /** 
+     * Guarda el boleto en un archivo.
+     *
+     * @throws Exception si no se pudo guardar.
+     */
+    public void guardar() throws Exception {
+	    String archivo = String.format("%s_%s.vuelo",
+			    this.tipoVuelo.toString().toLowerCase(),
+			    this.nombrePasajero.replaceAll(" ", ""));
+	    try {
+		ObjectOutputStream salida = new ObjectOutputStream(
+				new FileOutputStream(archivo));
+		salida.writeObject(this);
+		salida.close();
+	    } catch (IOException e) {
+		    throw new Exception("!Error! No se ha podido guardar.");
+	    }
     }
 }
+

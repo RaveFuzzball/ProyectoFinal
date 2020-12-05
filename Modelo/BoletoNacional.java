@@ -1,3 +1,12 @@
+/**
+ * Representa un Boleto de clase Nacional.
+ *
+ * @author Ervey Guerrero Gómez
+ * @author David Hernandéz López
+ * @author Daniel Sánchez Vázquez 
+ * @author Alejandro Tonatiuh García Espinoza 
+ */
+
 package Modelo;
 
 public class BoletoNacional extends Boleto {

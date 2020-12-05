@@ -1,8 +1,17 @@
+/**
+ * Representa un Boleto de clase Internacional.
+ *
+ * @author Ervey Guerrero Gómez
+ * @author David Hernandéz López
+ * @author Daniel Sánchez Vázquez 
+ * @author Alejandro Tonatiuh García Espinoza 
+ */
+
 package Modelo;
 
 public class BoletoInternacional extends Boleto {
-    private final int numPasaporte;
     private final EnumVisa tipoVisa;
+    private final int numPasaporte;
     private final int añosVigenciaVisa;
 
     /**
