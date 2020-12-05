@@ -9,6 +9,13 @@
 
 package Modelo;
 
+import java.io.File;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class ListaLigada {
   private Nodo raiz;
 
@@ -96,6 +103,49 @@ public class ListaLigada {
         aux = aux.getSiguiente();
       }
       aux.setSiguiente(nuevoNodo);
+    }
+  }
+
+  /** 
+   * Llena la lista ligada con los {@link Boleto} obtenidos de los archivos en
+   * la carpeta indicada.
+   *
+   * @param dir la dirección de la carpeta.
+  */
+  public void insertarBoletosPorCarpeta(String dir) {
+    File carpeta = new File(dir);
+    FilenameFilter vueloFileFilter = new FilenameFilter() {
+      public boolean accept(File dir, String name) {
+        String lowerCaseName = name.toLowerCase();
+        if (lowerCaseName.endsWith(".vuelo")) {
+          return true;
+        }
+        return false;
+      }
+    };
+    File listaArchivos[] = carpeta.listFiles(vueloFileFilter);
+    if (listaArchivos != null) {
+      for (File archivo : listaArchivos) {
+        try {
+          ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(archivo));
+          Boleto boleto = null;
+          if (archivo.getName().contains("internacional")) {
+            boleto = (BoletoInternacional) entrada.readObject();
+          } else if (archivo.getName().contains("nacional")) {
+            boleto = (BoletoNacional) entrada.readObject();
+          }
+          if (boleto != null) {
+            this.insertarBoleto(boleto);
+          }
+          entrada.close();
+        } catch (ClassNotFoundException e) {
+          continue;
+        }catch (FileNotFoundException e) {
+          continue;
+        } catch (IOException e) {
+          continue;
+        }
+      }
     }
   }
 }
