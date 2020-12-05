@@ -140,7 +140,7 @@ public class ListaLigada {
           entrada.close();
         } catch (ClassNotFoundException e) {
           continue;
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
           continue;
         } catch (IOException e) {
           continue;
