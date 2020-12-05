@@ -122,24 +122,28 @@ public class MenuView extends JFrame implements WindowListener {
     }// </editor-fold>
 
     private void salirMenuItemActionPerformed(ActionEvent evt) {
+        System.exit(0);
     }
 
     private void boletoInternacionalMenuItemActionPerformed(ActionEvent evt) {
+        BoletoInternacionalView boletoInternacionalView= new BoletoInternacionalView();
+        boletoInternacionalView.setVisible(true);
     }
 
     private void boletoNacionalMenuItemActionPerformed(ActionEvent evt) {
+        BoletoNacionalView boletoNacionalView= new BoletoNacionalView();
+        boletoNacionalView.setVisible(true);
     }
 
     private void imprimirBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-
+        JOptionPane.showMessageDialog(null,"En contruccion");
     }
 
     private void cancelarBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-
+        JOptionPane.showMessageDialog(null,"En contruccion");
     }
 
     private void registrarBoletoMenuActionPerformed(java.awt.event.ActionEvent evt) {
-
     }
 
     @Override

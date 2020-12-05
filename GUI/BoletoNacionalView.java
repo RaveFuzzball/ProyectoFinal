@@ -9,6 +9,7 @@ public class BoletoNacionalView extends BoletoView{
     public BoletoNacionalView(){
         JPanel contenedor = new JPanel(new GridBagLayout());
         contenedor.setBackground(Color.decode("#2299f0"));
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         agregarComponente(contenedor,curpLabel,0,0);
         agregarComponente(contenedor,curpTextField,1,0);

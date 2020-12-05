@@ -16,6 +16,7 @@ public class BoletoInternacionalView extends BoletoView {
     public BoletoInternacionalView(){
         JPanel contenedor = new JPanel(new GridBagLayout());
         contenedor.setBackground(Color.decode("#2299f0"));
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         agregarComponente(contenedor,numPasaporteLabel,0,0);
         agregarComponente(contenedor,numPasaporteTextField,1,0);
