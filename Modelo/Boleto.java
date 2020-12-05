@@ -9,6 +9,7 @@
 
 package Modelo;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -31,26 +32,26 @@ public abstract class Boleto implements Serializable {
     /**
      * Constructor de la clase.
      *
-     * @param nombrePasajero	el nombre del pasajero.
-     * @param edadPasajero	la edad del pasajero.
-     * @param generoPasajero	el género del pasajero.
-     * @param clasePasajero		la clase en la que vuela el pasajero.
-     * @param numAsiento	el asiento asignado al pasajero.
-     * @param numVuelo	el número de vuelo.
-     * @param aerolinea		la aerolínea.
-     * @param destino	el destino del pasajero.
+     * @param nombrePasajero  el nombre del pasajero.
+     * @param edadPasajero  la edad del pasajero.
+     * @param generoPasajero  el género del pasajero.
+     * @param clasePasajero   la clase en la que vuela el pasajero.
+     * @param numAsiento  el asiento asignado al pasajero.
+     * @param numVuelo  el número de vuelo.
+     * @param aerolinea   la aerolínea.
+     * @param destino el destino del pasajero.
      */
     public Boleto(String nombrePasajero,
-		    int edadPasajero,
-		    String generoPasajero,
-		    EnumClase clasePasajero,
-		    int numAsiento,
-		    int numVuelo,
-		    String aerolinea,
-		    String destino) {
+        int edadPasajero,
+        String generoPasajero,
+        EnumClase clasePasajero,
+        int numAsiento,
+        int numVuelo,
+        String aerolinea,
+        String destino) {
         this.clasePasajero = clasePasajero;
         this.edadPasajero = edadPasajero;
-	this.folio = ++Boleto.numBoletos;
+  this.folio = ++Boleto.numBoletos;
         this.numAsiento = numAsiento;
         this.numVuelo = numVuelo;
         this.aerolinea = aerolinea;
@@ -152,23 +153,38 @@ public abstract class Boleto implements Serializable {
       return this.folio;
     }
 
-    /** 
-     * Guarda el boleto en un archivo.
+    /**
+     * Guarda el boleto en un archivo en la carpeta actual.
      *
      * @throws Exception si no se pudo guardar.
      */
     public void guardar() throws Exception {
-	    String archivo = String.format("%s_%s.vuelo",
-			    this.tipoVuelo.toString().toLowerCase(),
-			    this.nombrePasajero.replaceAll(" ", ""));
-	    try {
-		ObjectOutputStream salida = new ObjectOutputStream(
-				new FileOutputStream(archivo));
-		salida.writeObject(this);
-		salida.close();
-	    } catch (IOException e) {
-		    throw new Exception("!Error! No se ha podido guardar.");
-	    }
+      this.guardar("./"); // "./" es la dirección relativa a la carpeta actual.
+    }
+
+    /**
+     * Guarda el boleto en un archivo en la carpeta con la dirección dada.
+     *
+     * @throws Exception si no se pudo guardar.
+     */
+    public void guardar(String dir) throws Exception {
+      if (!dir.endsWith("/")) {
+        dir += "/";
+      }
+      String archivo = String.format("%s%s_%s.vuelo",
+          dir,
+          this.tipoVuelo.toString().toLowerCase(),
+          this.nombrePasajero.replaceAll(" ", ""));
+      try {
+        ObjectOutputStream salida = new ObjectOutputStream(
+            new FileOutputStream(archivo));
+        salida.writeObject(this);
+        salida.close();
+      } catch (FileNotFoundException e) {
+        throw new Exception("¡Error! La carpeta indicada no existe.");
+      } catch (IOException e) {
+        throw new Exception("¡Error! No se ha podido guardar.");
+      }
     }
 }
 
