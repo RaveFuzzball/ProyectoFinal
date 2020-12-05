@@ -12,34 +12,37 @@ package Modelo;
 public class ListaLigada {
   private Nodo raiz;
 
-  public Nodo buscarBoletoPorFolio(int folio) {
+  /** Regresa el primer {@link Boleto} con el folio buscado. */
+  public Boleto buscarBoletoPorFolio(int folio) {
     Nodo aux = this.raiz;
     if (this.raiz == null) {
       return null;
     }
     while (aux != null) {
       if (aux.getInformacion().getFolio() == folio) {
-        return aux;
+        return aux.getInformacion();
       }
       aux = aux.getSiguiente();
     }
     return null;
   }
 
-  public Nodo buscarBoletoPorNombre(String nombre) {
+  /** Regresa el primer {@link Boleto} con el nombre buscado. */
+  public Boleto buscarBoletoPorNombre(String nombre) {
     Nodo aux = this.raiz;
     if (this.raiz == null) {
       return null;
     }
     while (aux != null) {
       if (aux.getInformacion().getNombrePasajero().equals(nombre)) {
-        return aux;
+        return aux.getInformacion();
       }
       aux = aux.getSiguiente();
     }
     return null;
   }
 
+  /** Elimina de la lista ligada el primer nodo con el folio dado. */
   public void eliminarBoletoPorFolio(int folio) {
     Nodo aux = this.raiz;
     Nodo ant = this.raiz;
@@ -60,6 +63,7 @@ public class ListaLigada {
     }
   }
 
+  /** Elimina de la lista ligada el primer nodo con el nombre dado. */
   public void eliminarBoletoPorNombre(String nombre) {
     Nodo aux = this.raiz;
     Nodo ant = this.raiz;
@@ -80,6 +84,7 @@ public class ListaLigada {
     }
   }
 
+  /** Inserta un nuevo {@link Boleto} a la lista ligada. */
   public void insertarBoleto(Boleto boleto) {
     Nodo nuevoNodo = new Nodo(boleto);
     Nodo aux;
