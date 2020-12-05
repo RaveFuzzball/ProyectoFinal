@@ -12,7 +12,6 @@ public abstract class BoletoView extends JFrame {
     protected JLabel numVueloLabel = new JLabel("Numero de Vuelo: ");
     protected JLabel aerolineaLabel = new JLabel("Aerolinea: ");
     protected JLabel destinoLabel = new JLabel("Destino: ");
-    protected JLabel tipoVueloLabel = new JLabel("Tipo de Vuelo: ");
 
     protected JTextField nombreTextField = new JTextField(20);
     protected JTextField edadTextField = new JTextField(20);
@@ -23,8 +22,7 @@ public abstract class BoletoView extends JFrame {
     protected JTextField numVueloTextField = new JTextField(20);
     protected JTextField aerolineaTextField = new JTextField(20);
     protected JTextField destinoTextField = new JTextField(20);
-    protected JComboBox<String> tipoVueloComboBox = new JComboBox<String>
-            (new String[]{"NACIONAL","INTERNACIONAL"});
+
 
 
     public BoletoView(){
@@ -57,9 +55,6 @@ public abstract class BoletoView extends JFrame {
 
         agregarComponente(contenedor,destinoLabel,2,2);
         agregarComponente(contenedor,destinoTextField,3,2);
-
-        agregarComponente(contenedor,tipoVueloLabel,2,3);
-        agregarComponente(contenedor,tipoVueloComboBox,3,3);
 
         getContentPane().add(contenedor,BorderLayout.NORTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -110,8 +105,4 @@ public abstract class BoletoView extends JFrame {
         return destinoTextField.getText();
     }
 
-    //MODIFICAR PARA RETORNAR ENUMVUELO
-    public String getTipoVuelo(){
-        return (String)tipoVueloComboBox.getSelectedItem();
-    }
 }
