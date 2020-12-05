@@ -12,8 +12,9 @@ package Modelo;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public abstract class Boleto {
+public abstract class Boleto implements Serializable {
     public static int numBoletos;
     
     protected EnumClase clasePasajero;
