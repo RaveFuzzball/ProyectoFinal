@@ -146,6 +146,11 @@ public abstract class Boleto {
         return this.tipoVuelo;
     }
 
+    /** Regresa el folio del boleto.  */
+    public int getFolio() {
+      return this.folio;
+    }
+
     /** 
      * Guarda el boleto en un archivo.
      *
