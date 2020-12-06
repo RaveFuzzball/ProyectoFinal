@@ -20,7 +20,7 @@ public class Controller{
 /*Controlador de la vista internacional*/
 class InternacionalController implements ActionListener{
     private BoletoInternacionalView vistaInternacional;
-
+    private RegistroEquipajeView reg;
     public InternacionalController(BoletoInternacionalView vista){
         this.vistaInternacional = vista;
         eventos();
@@ -34,10 +34,29 @@ class InternacionalController implements ActionListener{
         Object evt = e.getSource();
         if(evt.equals(vistaInternacional.panelBotones.enviarBoton)){
             try {
+              
+                Pasajero pasajero;
                 BoletoInternacional b1 = new BoletoInternacional(vistaInternacional.getNombrePasajero(), vistaInternacional.getEdadPasajero(), vistaInternacional.getGeneroPasajero(), vistaInternacional.getClasePasajero(), vistaInternacional.getNumAsiento(), vistaInternacional.getNumVuelo(), vistaInternacional.getAeroLinea(), vistaInternacional.getDestino(), vistaInternacional.getNumPasaporte(), vistaInternacional.getTipoVisa(), vistaInternacional.getVigencia());
+
                 Controller.lista.insertarBoleto(b1);
                 b1.guardar("Boletos");
-                JOptionPane.showMessageDialog(null,b1.mostrar());
+                int opcion = JOptionPane.showConfirmDialog(null,"Desea Registrar Maleta");
+
+                if(opcion == 0){
+                    switch (b1.getClasePasajero()){
+                        case TURISTA:
+                            pasajero = new PasajeroTurista(b1);
+                            reg = new RegistroEquipajeView(1);
+                            break;
+                        case EJECUTIVO:
+                            pasajero = new PasajeroEjecutivo(b1);
+                            reg = new RegistroEquipajeView(((PasajeroEjecutivo)pasajero).getMaletas().length);
+                            break;
+                        case PRIMERA_CLASE:
+                            pasajero = new PasajeroPrimeraClase(b1);
+                            reg = new RegistroEquipajeView(((PasajeroPrimeraClase)pasajero).getMaletas().length);
+                    }
+                }
             }catch (NumberFormatException a){
                 JOptionPane.showMessageDialog(null,"Hay datos incorrectos, por favor cambielos");
                 a.printStackTrace();
@@ -45,14 +64,14 @@ class InternacionalController implements ActionListener{
                 b.printStackTrace();
             }
         }else if(evt.equals(vistaInternacional.panelBotones.cancelarBoton)){
-            System.exit(1);
+            vistaInternacional.dispose();
         }
     }
 }
 /*Controlador vista nacional*/
 class NacionalController implements ActionListener{
     private BoletoNacionalView vistaNacional;
-
+    private RegistroEquipajeView reg;
     public NacionalController(BoletoNacionalView vista){
         this.vistaNacional = vista;
         eventos();
@@ -66,18 +85,39 @@ class NacionalController implements ActionListener{
         Object evt = e.getSource();
         if(evt.equals(vistaNacional.panelBotones1.enviarBoton)){
             try {
+
+                Pasajero pasajero;
                 BoletoNacional b1 = new BoletoNacional(vistaNacional.getNombrePasajero(), vistaNacional.getEdadPasajero(), vistaNacional.getGeneroPasajero(), vistaNacional.getClasePasajero(), vistaNacional.getNumAsiento(), vistaNacional.getNumVuelo(), vistaNacional.getAeroLinea(), vistaNacional.getDestino(),vistaNacional.getCurp());
+
                 Controller.lista.insertarBoleto(b1);
                 b1.guardar("Boletos");
-                JOptionPane.showMessageDialog(null,b1.mostrar());
+                int opcion = JOptionPane.showConfirmDialog(null,"Desea Registrar Maleta");
+
+                if(opcion == 0){
+                    switch (b1.getClasePasajero()){
+                        case TURISTA:
+                            pasajero = new PasajeroTurista(b1);
+                            reg = new RegistroEquipajeView(1);
+                            break;
+                        case EJECUTIVO:
+                            pasajero = new PasajeroEjecutivo(b1);
+                            reg = new RegistroEquipajeView(((PasajeroEjecutivo)pasajero).getMaletas().length);
+                            break;
+                        case PRIMERA_CLASE:
+                            pasajero = new PasajeroPrimeraClase(b1);
+                            reg = new RegistroEquipajeView(((PasajeroPrimeraClase)pasajero).getMaletas().length);
+                    }
+                }
+
+
+
             }catch (NumberFormatException a){
                 JOptionPane.showMessageDialog(null,"Hay datos incorrectos, por favor cambielos");
-                a.printStackTrace();
             }catch (Exception b){
                 b.printStackTrace();
             }
         }else if(evt.equals(vistaNacional.panelBotones1.cancelarBoton)){
-            System.exit(1);
+            vistaNacional.dispose();
         }
     }
 }
