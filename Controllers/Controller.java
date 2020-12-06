@@ -1,12 +1,20 @@
+/**
+ * Representa un Boleto.
+ *
+ * @author Ervey Guerrero Gómez
+ * @author David Hernandéz López
+ * @author Daniel Sánchez Vázquez 
+ * @author Alejandro Tonatiuh García Espinoza 
+ */
+
 package Controllers;
 
-
-import Modelo.*;
-import GUI.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
+import GUI.*;
+import Modelo.*;
 
 public class Controller{
     public static ListaLigada lista = new ListaLigada();
@@ -155,7 +163,7 @@ class CancelarController implements ActionListener{
         if(evt.equals(vista.enviarFolioBoton)){
             try {
                 Boleto b1 = Controller.lista.buscarBoletoPorFolio(vista.getFolio());
-                b1.eliminar(b1.getNombrePasajero(),b1.getTipoVuelo());
+                b1.eliminar("Boletos/");
                 Controller.lista.eliminarBoletoPorFolio(vista.getFolio());
                 vista.dispose();
             }catch (Exception a){
@@ -164,7 +172,7 @@ class CancelarController implements ActionListener{
         }else if(evt.equals(vista.enviarOpcion2Boton)){
             try {
                 Boleto b1 = Controller.lista.buscarBoletoPorNombre(vista.getNombre());
-                b1.eliminar(vista.getNombre(), vista.getTipoVuelo());
+                b1.eliminar("Boletos/");
                 Controller.lista.eliminarBoletoPorNombre(vista.getNombre());
                 vista.dispose();
             }catch (Exception a){
