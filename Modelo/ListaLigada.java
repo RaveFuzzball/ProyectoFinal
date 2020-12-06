@@ -131,8 +131,10 @@ public class ListaLigada {
           Boleto boleto = null;
           if (archivo.getName().contains("internacional")) {
             boleto = (BoletoInternacional) entrada.readObject();
+            Boleto.numBoletos++;
           } else if (archivo.getName().contains("nacional")) {
             boleto = (BoletoNacional) entrada.readObject();
+            Boleto.numBoletos++;
           }
           if (boleto != null) {
             this.insertarBoleto(boleto);
