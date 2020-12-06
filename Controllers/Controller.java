@@ -34,7 +34,7 @@ class InternacionalController implements ActionListener{
         Object evt = e.getSource();
         if(evt.equals(vistaInternacional.panelBotones.enviarBoton)){
             try {
-                BoletoInternacional b1 = new BoletoInternacional(vistaInternacional.getNombrePasajero(), vistaInternacional.getEdadPasajero(), vistaInternacional.getGeneroPasajero(), EnumClase.valueOf(vistaInternacional.getClasePasajero()), vistaInternacional.getNumAsiento(), vistaInternacional.getNumVuelo(), vistaInternacional.getAeroLinea(), vistaInternacional.getDestino(), vistaInternacional.getNumPasaporte(), EnumVisa.valueOf(vistaInternacional.getTipoVisa()), vistaInternacional.getVigencia());
+                BoletoInternacional b1 = new BoletoInternacional(vistaInternacional.getNombrePasajero(), vistaInternacional.getEdadPasajero(), vistaInternacional.getGeneroPasajero(), vistaInternacional.getClasePasajero(), vistaInternacional.getNumAsiento(), vistaInternacional.getNumVuelo(), vistaInternacional.getAeroLinea(), vistaInternacional.getDestino(), vistaInternacional.getNumPasaporte(), vistaInternacional.getTipoVisa(), vistaInternacional.getVigencia());
                 Controller.lista.insertarBoleto(b1);
                 b1.guardar("Boletos");
                 JOptionPane.showMessageDialog(null,b1.mostrar());
@@ -66,7 +66,7 @@ class NacionalController implements ActionListener{
         Object evt = e.getSource();
         if(evt.equals(vistaNacional.panelBotones1.enviarBoton)){
             try {
-                BoletoNacional b1 = new BoletoNacional(vistaNacional.getNombrePasajero(), vistaNacional.getEdadPasajero(), vistaNacional.getGeneroPasajero(), EnumClase.valueOf(vistaNacional.getClasePasajero()), vistaNacional.getNumAsiento(), vistaNacional.getNumVuelo(), vistaNacional.getAeroLinea(), vistaNacional.getDestino(),vistaNacional.getCurp());
+                BoletoNacional b1 = new BoletoNacional(vistaNacional.getNombrePasajero(), vistaNacional.getEdadPasajero(), vistaNacional.getGeneroPasajero(), vistaNacional.getClasePasajero(), vistaNacional.getNumAsiento(), vistaNacional.getNumVuelo(), vistaNacional.getAeroLinea(), vistaNacional.getDestino(),vistaNacional.getCurp());
                 Controller.lista.insertarBoleto(b1);
                 b1.guardar("Boletos");
                 JOptionPane.showMessageDialog(null,b1.mostrar());

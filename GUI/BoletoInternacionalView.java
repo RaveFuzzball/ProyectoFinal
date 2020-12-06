@@ -1,4 +1,6 @@
 package GUI;
+import Modelo.EnumVisa;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -32,11 +34,10 @@ public class BoletoInternacionalView extends BoletoView {
 
         panelSouth.add(contenedor);
         panelSouth.add(panelBotones);
-        //JLabel backgroundLabel = new JLabel(new ImageIcon(
-          //      this.getClass().getResource("images\\RegistrationN1_Parejo_Fondo.png")));
+
 
         getContentPane().add(panelSouth,BorderLayout.SOUTH);
-        //getContentPane().add(backgroundLabel, BorderLayout.WEST);
+
         setTitle("Registro de Boleto Internacional");
         pack();
     }
@@ -45,9 +46,9 @@ public class BoletoInternacionalView extends BoletoView {
         return Integer.parseInt(numPasaporteTextField.getText());
     }
 
-    //MODIFICAR PARA ENUMVISA
-    public String getTipoVisa(){
-        return (String)tipoVisaComboBox.getSelectedItem();
+
+    public EnumVisa getTipoVisa(){
+        return EnumVisa.valueOf((String)tipoVisaComboBox.getSelectedItem());
     }
 
     public int getVigencia(){

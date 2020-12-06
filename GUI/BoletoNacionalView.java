@@ -19,11 +19,10 @@ public class BoletoNacionalView extends BoletoView{
 
         panelSouth.add(contenedor);
         panelSouth.add(panelBotones1);
-        //JLabel backgroundLabel = new JLabel(new ImageIcon(
-        //      this.getClass().getResource("images\\RegistrationN1_Parejo_Fondo.png")));
+
 
         getContentPane().add(panelSouth,BorderLayout.SOUTH);
-        //getContentPane().add(backgroundLabel, BorderLayout.WEST);
+
         setTitle("Registro de Boleto Nacional");
         pack();
     }
