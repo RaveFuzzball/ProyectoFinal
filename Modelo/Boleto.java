@@ -186,7 +186,7 @@ public abstract class Boleto implements Serializable {
         String tipoVueloBoletoAux = tipoVueloBoleto.toString ()
                 .toLowerCase ();
         nombrePasajeroBoleto = nombrePasajeroBoleto.replace (" ", "");
-        String archivo = String.format ("%s_%s.vuelo",
+        String archivo = String.format ("Boletos\\%s_%s.vuelo",
                 tipoVueloBoletoAux,
                 nombrePasajeroBoleto);
         try {
