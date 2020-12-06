@@ -47,7 +47,7 @@ public abstract class Boleto implements Serializable {
         String destino) {
         this.clasePasajero = clasePasajero;
         this.edadPasajero = edadPasajero;
-  this.folio = ++Boleto.numBoletos;
+        this.folio = Boleto.numBoletos++;
         this.numAsiento = numAsiento;
         this.numVuelo = numVuelo;
         this.aerolinea = aerolinea;
