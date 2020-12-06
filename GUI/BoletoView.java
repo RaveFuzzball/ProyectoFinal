@@ -94,7 +94,7 @@ public abstract class BoletoView extends JFrame {
     }
 
     public int getNumVuelo(){
-        return Integer.parseInt(numVueloLabel.getText());
+        return Integer.parseInt(numVueloTextField.getText());
     }
 
     public String getAeroLinea(){

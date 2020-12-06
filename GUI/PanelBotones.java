@@ -4,8 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class PanelBotones extends JPanel {
-    JButton enviarBoton = new JButton("Enviar");
-    JButton cancelarBoton = new JButton("Cancelar");
+    public JButton enviarBoton = new JButton("Enviar");
+    public JButton cancelarBoton = new JButton("Cancelar");
 
     public PanelBotones(){
         this.setLayout(new GridBagLayout());

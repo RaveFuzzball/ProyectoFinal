@@ -7,7 +7,7 @@ public class BoletoInternacionalView extends BoletoView {
     private JLabel numPasaporteLabel = new JLabel("Número de Pasaporte: ");
     private JLabel tipoVisaLabel = new JLabel("Tipo de Visa: ");
     private JLabel vigenciaLabel = new JLabel("Vigencia: ");
-
+    public PanelBotones panelBotones;
     private JTextField numPasaporteTextField = new JTextField(20);
     private JComboBox<String> tipoVisaComboBox =
             new JComboBox<String>(new String[]{"TURISTA","TRABAJO","ATENCION_MEDICA"});
@@ -28,7 +28,7 @@ public class BoletoInternacionalView extends BoletoView {
         agregarComponente(contenedor,tipoVisaComboBox,1,2);
 
         JPanel panelSouth = new JPanel(new GridLayout(1,2));
-        PanelBotones panelBotones = new PanelBotones();
+        panelBotones = new PanelBotones();
 
         panelSouth.add(contenedor);
         panelSouth.add(panelBotones);

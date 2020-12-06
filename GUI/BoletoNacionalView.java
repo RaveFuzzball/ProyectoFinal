@@ -5,7 +5,7 @@ import java.awt.*;
 public class BoletoNacionalView extends BoletoView{
     private JLabel curpLabel = new JLabel("Ingrese su Curp:      ");
     private JTextField curpTextField = new JTextField(20);
-
+    public PanelBotones panelBotones1;
     public BoletoNacionalView(){
         JPanel contenedor = new JPanel(new GridBagLayout());
         contenedor.setBackground(Color.decode("#2299f0"));
@@ -15,10 +15,10 @@ public class BoletoNacionalView extends BoletoView{
         agregarComponente(contenedor,curpTextField,1,0);
 
         JPanel panelSouth = new JPanel(new GridLayout(1,2));
-        PanelBotones panelBotones = new PanelBotones();
+        panelBotones1 = new PanelBotones();
 
         panelSouth.add(contenedor);
-        panelSouth.add(panelBotones);
+        panelSouth.add(panelBotones1);
         //JLabel backgroundLabel = new JLabel(new ImageIcon(
         //      this.getClass().getResource("images\\RegistrationN1_Parejo_Fondo.png")));
 

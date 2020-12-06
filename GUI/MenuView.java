@@ -1,4 +1,7 @@
 package GUI;
+import Controllers.Controller;
+import Modelo.ListaLigada;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,7 +19,6 @@ Alejandro Tonatiuh García Espinoza
 
 
 public class MenuView extends JFrame implements WindowListener {
-
     public MenuView() {
         initComponents();
     }
@@ -126,13 +128,13 @@ public class MenuView extends JFrame implements WindowListener {
     }
 
     private void boletoInternacionalMenuItemActionPerformed(ActionEvent evt) {
-        BoletoInternacionalView boletoInternacionalView= new BoletoInternacionalView();
-        boletoInternacionalView.setVisible(true);
+        BoletoInternacionalView vista = new BoletoInternacionalView();
+        Controller controller = new Controller(vista);
     }
 
     private void boletoNacionalMenuItemActionPerformed(ActionEvent evt) {
-        BoletoNacionalView boletoNacionalView= new BoletoNacionalView();
-        boletoNacionalView.setVisible(true);
+        BoletoNacionalView vista = new BoletoNacionalView();
+        Controller controller = new Controller(vista);
     }
 
     private void imprimirBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
