@@ -1,7 +1,10 @@
 package GUI;
+import Modelo.EnumClase;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public abstract class BoletoView extends JFrame {
     protected JLabel nombreLabel = new JLabel("Nombre: ");
@@ -28,6 +31,9 @@ public abstract class BoletoView extends JFrame {
     public BoletoView(){
         this.setLayout(new BorderLayout());
         this.setBackground(Color.decode("#2299f0"));
+        URL iconURL = getClass().getResource("images/iconavion.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        setIconImage(icon.getImage());
 
         JPanel contenedor = new JPanel(new GridBagLayout());
         contenedor.setBackground(Color.decode("#2299f0"));
@@ -84,9 +90,9 @@ public abstract class BoletoView extends JFrame {
         return generoTextField.getText();
     }
 
-    //MODIFICAR A ENUMCLASE EN VEZ DE STRING
-    public String getClasePasajero(){
-        return (String)claseComboBox.getSelectedItem();
+
+    public EnumClase getClasePasajero(){
+        return EnumClase.valueOf((String)claseComboBox.getSelectedItem());
     }
 
     public int getNumAsiento(){
