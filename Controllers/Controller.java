@@ -1,5 +1,5 @@
 /**
- * Representa un Boleto.
+ * Controladores para la vista.
  *
  * @author Ervey Guerrero Gómez
  * @author David Hernandéz López
