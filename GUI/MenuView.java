@@ -138,11 +138,13 @@ public class MenuView extends JFrame implements WindowListener {
     }
 
     private void imprimirBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null,"En contruccion");
+        BuscarBoletoView vista = new BuscarBoletoView("Imprimir boleto");
+        Controller controller = new Controller(vista);
     }
 
     private void cancelarBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null,"En contruccion");
+        BuscarBoletoView vista = new BuscarBoletoView("Cancelar Boleto");
+        Controller controller = new Controller(vista);
     }
 
     private void registrarBoletoMenuActionPerformed(java.awt.event.ActionEvent evt) {

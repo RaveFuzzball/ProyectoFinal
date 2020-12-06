@@ -9,11 +9,7 @@
 
 package Modelo;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 public abstract class Boleto implements Serializable {
     public static int numBoletos;
@@ -185,6 +181,20 @@ public abstract class Boleto implements Serializable {
       } catch (IOException e) {
         throw new Exception("¡Error! No se ha podido guardar.");
       }
+    }
+    public void eliminar(String nombrePasajeroBoleto, EnumVuelo tipoVueloBoleto) throws Exception {
+        String tipoVueloBoletoAux = tipoVueloBoleto.toString ()
+                .toLowerCase ();
+        nombrePasajeroBoleto = nombrePasajeroBoleto.replace (" ", "");
+        String archivo = String.format ("%s_%s.vuelo",
+                tipoVueloBoletoAux,
+                nombrePasajeroBoleto);
+        try {
+            File f = new File (archivo);
+            f.delete ();
+        } catch (Exception e) {
+            throw new Exception ("¡Error! No se ha podido eliminar el archivo.");
+        }
     }
 }
 

@@ -25,10 +25,11 @@ public class BuscarBoletoView extends JFrame {
     JComboBox<String> tipoVueloComboBox = new
             JComboBox<String>(new String[]{"NACIONAL", "INTERNACIONAL"});
 
-    private JButton enviarFolioBoton = new JButton("Enviar");
-    private JButton enviarOpcion2Boton = new JButton("Enviar");
+    public JButton enviarFolioBoton = new JButton("Enviar");
+    public JButton enviarOpcion2Boton = new JButton("Enviar");
 
-    public BuscarBoletoView(){
+    public BuscarBoletoView(String titulo){
+        this.setTitle(titulo);
         this.setLayout(new BorderLayout());
         this.setBackground(Color.decode("#2299f0"));
         URL iconURL = getClass().getResource("images/iconavion.png");
@@ -87,4 +88,5 @@ public class BuscarBoletoView extends JFrame {
     public JButton getEnviarOpcion2Boton() {
         return enviarOpcion2Boton;
     }
+
 }
