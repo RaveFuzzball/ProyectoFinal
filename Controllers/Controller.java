@@ -243,7 +243,8 @@ class RegistroController implements ActionListener{
                     maletas[i] = new Maleta(Peso[i]);
                     pasajero.documentarMaleta(maletas[i]);
 
-                    JOptionPane.showMessageDialog(null, "Su maleta tiene un conto por exceso de: " + maletas[i].obtenerTotal());
+                    JOptionPane.showMessageDialog(null, "Su maleta " +(i+1)+" tiene" +
+                            " un costo por exceso de: " + maletas[i].obtenerTotal());
                 }
             }catch (NumberFormatException a){
                 JOptionPane.showMessageDialog(null,"Error, en los datos");
