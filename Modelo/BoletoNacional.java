@@ -85,7 +85,7 @@ public class BoletoNacional extends Boleto {
                 this.destino,
                 "CURP",
                 this.curpPasajero,
-                "Su FOLIO",
+                "SU FOLIO",
                 this.folio);
     }
 }

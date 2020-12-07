@@ -53,6 +53,8 @@ class InternacionalController implements ActionListener{
                 Pasajero pasajero;
                 BoletoInternacional b1 = new BoletoInternacional(vistaInternacional.getNombrePasajero(), vistaInternacional.getEdadPasajero(), vistaInternacional.getGeneroPasajero(), vistaInternacional.getClasePasajero(), vistaInternacional.getNumAsiento(), vistaInternacional.getNumVuelo(), vistaInternacional.getAeroLinea(), vistaInternacional.getDestino(), vistaInternacional.getNumPasaporte(), vistaInternacional.getTipoVisa(), vistaInternacional.getVigencia());
                 if(JOptionPane.showConfirmDialog(null,"¿Son correctos los datos?") == 0) {
+                    JOptionPane.showMessageDialog(null,b1.mostrar(),
+                            "Datos de su Boleto",JOptionPane.INFORMATION_MESSAGE);
                     Controller.lista.insertarBoleto(b1);
                     b1.guardar("Boletos");
                     int opcion = JOptionPane.showConfirmDialog(null, "Desea Registrar Maleta");
@@ -110,6 +112,8 @@ class NacionalController implements ActionListener{
                 BoletoNacional b1 = new BoletoNacional(vistaNacional.getNombrePasajero(), vistaNacional.getEdadPasajero(), vistaNacional.getGeneroPasajero(), vistaNacional.getClasePasajero(), vistaNacional.getNumAsiento(), vistaNacional.getNumVuelo(), vistaNacional.getAeroLinea(), vistaNacional.getDestino(),vistaNacional.getCurp());
                 RegistroController registro;
                 if(JOptionPane.showConfirmDialog(null,"¿Son correctos los datos?") == 0) {
+                    JOptionPane.showMessageDialog(null,b1.mostrar(),
+                            "Datos de su Boleto",JOptionPane.INFORMATION_MESSAGE);
                     Controller.lista.insertarBoleto(b1);
                     b1.guardar("Boletos");
                     int opcion = JOptionPane.showConfirmDialog(null, "Desea Registrar Maleta");
