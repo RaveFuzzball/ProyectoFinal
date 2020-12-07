@@ -89,30 +89,33 @@ public class BoletoInternacional extends Boleto {
     public String mostrar() {
         String linea = "-------------------------------------------------------------------------------------------------------------------------------------------------\n";
         String encabezado = "\t\t\t\t\t\t\t\t\tBoleto\n";
-        String datosFormato = "%10s%10s%10s%10s%15s%10s%10s%10s%15s%15s%20s\n";
+        //String datosFormato = "%10s%10s%10s%10s%15s%10s%10s%10s%25s\n";
+        String datosFormato = "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n";
         return String.format(
-                linea + encabezado + linea + datosFormato + datosFormato,
+                linea + encabezado + linea + datosFormato,
                 "Nombre",
-                "Edad",
-                "Genero",
-                "Clase",
-                "No. Asiento",
-                "No. Vuelo",
-                "Aerolínea",
-                "Destino",
-                "No. Pasaporte",
-                "Tipo de VISA",
-                "Vigencia de VISA",
                 this.nombrePasajero,
+                "Edad",
                 this.edadPasajero,
+                "Genero",
                 this.generoPasajero,
+                "Clase",
                 this.clasePasajero,
+                "No. Asiento",
                 this.numAsiento,
-                this.numVuelo,
+                "No. Vuelo",
+                this.numAsiento,
+                "Aerolínea",
                 this.aerolinea,
+                "Destino",
                 this.destino,
-                this.numPasaporte,
+                "Tipo de VISA",
                 this.tipoVisa,
-                this.añosVigenciaVisa);
+                "No. Pasaporte",
+                this.numPasaporte,
+                "Años de Vigencia de VISA",
+                this.añosVigenciaVisa,
+                "Su FOLIO",
+                this.folio);
     }
 }

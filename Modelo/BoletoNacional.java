@@ -63,26 +63,29 @@ public class BoletoNacional extends Boleto {
     public String mostrar() {
         String linea = "-------------------------------------------------------------------------------------------------------------------------------------------------\n";
         String encabezado = "\t\t\t\t\t\t\t\t\tBoleto\n";
-        String datosFormato = "%10s%10s%10s%10s%15s%10s%10s%10s%25s\n";
+        //String datosFormato = "%10s%10s%10s%10s%15s%10s%10s%10s%25s\n";
+        String datosFormato = "%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n%s: %s\n";
         return String.format(
-                linea + encabezado + linea + datosFormato + datosFormato,
+                linea + encabezado + linea + datosFormato,
                 "Nombre",
-                "Edad",
-                "Genero",
-                "Clase",
-                "No. Asiento",
-                "No. Vuelo",
-                "Aerolínea",
-                "Destino",
-                "CURP",
                 this.nombrePasajero,
+                "Edad",
                 this.edadPasajero,
+                "Genero",
                 this.generoPasajero,
+                "Clase",
                 this.clasePasajero,
+                "No. Asiento",
                 this.numAsiento,
-                this.numVuelo,
+                "No. Vuelo",
+                this.numAsiento,
+                "Aerolínea",
                 this.aerolinea,
+                "Destino",
                 this.destino,
-                this.curpPasajero);
+                "CURP",
+                this.curpPasajero,
+                "Su FOLIO",
+                this.folio);
     }
 }
