@@ -88,7 +88,7 @@ public class RegistroEquipajeView {
 
     //genera excepción
     private void setMaletas() {
-        for (int i = 0; i < maletaCount; i++) {
+        for (int i = 0; i <= maletaCount; i++) {
             pesoMaleta[i] = maletaViews[i].getPesoMaletaEntrada();
         }
     }
