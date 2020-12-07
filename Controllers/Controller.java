@@ -52,30 +52,31 @@ class InternacionalController implements ActionListener{
                 RegistroController registro;
                 Pasajero pasajero;
                 BoletoInternacional b1 = new BoletoInternacional(vistaInternacional.getNombrePasajero(), vistaInternacional.getEdadPasajero(), vistaInternacional.getGeneroPasajero(), vistaInternacional.getClasePasajero(), vistaInternacional.getNumAsiento(), vistaInternacional.getNumVuelo(), vistaInternacional.getAeroLinea(), vistaInternacional.getDestino(), vistaInternacional.getNumPasaporte(), vistaInternacional.getTipoVisa(), vistaInternacional.getVigencia());
+                if(JOptionPane.showConfirmDialog(null,"¿Son correctos los datos?") == 0) {
+                    Controller.lista.insertarBoleto(b1);
+                    b1.guardar("Boletos");
+                    int opcion = JOptionPane.showConfirmDialog(null, "Desea Registrar Maleta");
 
-                Controller.lista.insertarBoleto(b1);
-                b1.guardar("Boletos");
-                int opcion = JOptionPane.showConfirmDialog(null,"Desea Registrar Maleta");
-
-                if(opcion == 0){
-                    switch (b1.getClasePasajero()){
-                        case TURISTA:
-                            pasajero = new PasajeroTurista(b1);
-                            reg = new RegistroEquipajeView(1);
-                            registro = new RegistroController(reg,pasajero);
-                            break;
-                        case EJECUTIVO:
-                            pasajero = new PasajeroEjecutivo(b1);
-                            reg = new RegistroEquipajeView(((PasajeroEjecutivo)pasajero).getMaletas().length);
-                            registro = new RegistroController(reg,pasajero);
-                            break;
-                        case PRIMERA_CLASE:
-                            pasajero = new PasajeroPrimeraClase(b1);
-                            reg = new RegistroEquipajeView(((PasajeroPrimeraClase)pasajero).getMaletas().length);
-                            registro = new RegistroController(reg,pasajero);
+                    if (opcion == 0) {
+                        switch (b1.getClasePasajero()) {
+                            case TURISTA:
+                                pasajero = new PasajeroTurista(b1);
+                                reg = new RegistroEquipajeView(1);
+                                registro = new RegistroController(reg, pasajero);
+                                break;
+                            case EJECUTIVO:
+                                pasajero = new PasajeroEjecutivo(b1);
+                                reg = new RegistroEquipajeView(((PasajeroEjecutivo) pasajero).getMaletas().length);
+                                registro = new RegistroController(reg, pasajero);
+                                break;
+                            case PRIMERA_CLASE:
+                                pasajero = new PasajeroPrimeraClase(b1);
+                                reg = new RegistroEquipajeView(((PasajeroPrimeraClase) pasajero).getMaletas().length);
+                                registro = new RegistroController(reg, pasajero);
+                        }
                     }
+                    vistaInternacional.dispose();
                 }
-                vistaInternacional.dispose();
             }catch (NumberFormatException a){
                 JOptionPane.showMessageDialog(null,"Hay datos incorrectos, por favor cambielos");
                 a.printStackTrace();
@@ -108,30 +109,31 @@ class NacionalController implements ActionListener{
                 Pasajero pasajero;
                 BoletoNacional b1 = new BoletoNacional(vistaNacional.getNombrePasajero(), vistaNacional.getEdadPasajero(), vistaNacional.getGeneroPasajero(), vistaNacional.getClasePasajero(), vistaNacional.getNumAsiento(), vistaNacional.getNumVuelo(), vistaNacional.getAeroLinea(), vistaNacional.getDestino(),vistaNacional.getCurp());
                 RegistroController registro;
-                Controller.lista.insertarBoleto(b1);
-                b1.guardar("Boletos");
-                int opcion = JOptionPane.showConfirmDialog(null,"Desea Registrar Maleta");
+                if(JOptionPane.showConfirmDialog(null,"¿Son correctos los datos?") == 0) {
+                    Controller.lista.insertarBoleto(b1);
+                    b1.guardar("Boletos");
+                    int opcion = JOptionPane.showConfirmDialog(null, "Desea Registrar Maleta");
 
-                if(opcion == 0){
-                    switch (b1.getClasePasajero()){
-                        case TURISTA:
-                            pasajero = new PasajeroTurista(b1);
-                            reg = new RegistroEquipajeView(1);
-                            registro = new RegistroController(reg,pasajero);
-                            break;
-                        case EJECUTIVO:
-                            pasajero = new PasajeroEjecutivo(b1);
-                            reg = new RegistroEquipajeView(((PasajeroEjecutivo)pasajero).getMaletas().length);
-                            registro = new RegistroController(reg,pasajero);
-                            break;
-                        case PRIMERA_CLASE:
-                            pasajero = new PasajeroPrimeraClase(b1);
-                            reg = new RegistroEquipajeView(((PasajeroPrimeraClase)pasajero).getMaletas().length);
-                            registro = new RegistroController(reg,pasajero);
+                    if (opcion == 0) {
+                        switch (b1.getClasePasajero()) {
+                            case TURISTA:
+                                pasajero = new PasajeroTurista(b1);
+                                reg = new RegistroEquipajeView(1);
+                                registro = new RegistroController(reg, pasajero);
+                                break;
+                            case EJECUTIVO:
+                                pasajero = new PasajeroEjecutivo(b1);
+                                reg = new RegistroEquipajeView(((PasajeroEjecutivo) pasajero).getMaletas().length);
+                                registro = new RegistroController(reg, pasajero);
+                                break;
+                            case PRIMERA_CLASE:
+                                pasajero = new PasajeroPrimeraClase(b1);
+                                reg = new RegistroEquipajeView(((PasajeroPrimeraClase) pasajero).getMaletas().length);
+                                registro = new RegistroController(reg, pasajero);
+                        }
                     }
+                    vistaNacional.dispose();
                 }
-                vistaNacional.dispose();
-
 
 
             }catch (NumberFormatException a){
