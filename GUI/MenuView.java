@@ -1,24 +1,33 @@
+/**
+ * GUI - Menú principal.
+ *
+ * @author Ervey Guerrero Gómez
+ * @author David Hernandéz López
+ * @author Daniel Sánchez Vázquez 
+ * @author Alejandro Tonatiuh García Espinoza 
+ */
+
 package GUI;
 import Controllers.Controller;
-import Modelo.ListaLigada;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowListener;
-import java.awt.event.WindowEvent;
 import java.net.URL;
-import java.nio.file.Path;
 
-/*
-Ervey Guerrero Gómez
-David Hernández López
-Daniel Sánchez Vázquez
-Alejandro Tonatiuh García Espinoza
-*/
+public class MenuView extends JFrame {
+    private JMenuItem boletoInternacionalMenuItem;
+    private JMenuItem boletoNacionalMenuItem;
+    private JMenu buscarBoletoMenu;
+    private JMenu fileMenu;
+    private JLabel fondoLabel;
+    private JMenuItem imprimirBoletoMenuItem;
+    private JMenuItem cancelarBoletoMenuItem;
+    private JMenuBar jMenuBar1;
+    private JMenuItem jMenuItem4;
+    private JMenu registrarBoletoMenu;
+    private JMenuItem salirMenuItem;
 
-
-public class MenuView extends JFrame implements WindowListener {
     public MenuView() {
         initComponents();
     }
@@ -118,10 +127,9 @@ public class MenuView extends JFrame implements WindowListener {
                         .addComponent(fondoLabel, GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
         );
 
-        this.addWindowListener (this);
 
         pack();
-    }// </editor-fold>
+    }
 
     private void salirMenuItemActionPerformed(ActionEvent evt) {
         System.exit(0);
@@ -138,54 +146,15 @@ public class MenuView extends JFrame implements WindowListener {
     }
 
     private void imprimirBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null,"En contruccion");
+        BuscarBoletoView vista = new BuscarBoletoView("Imprimir boleto");
+        Controller controller = new Controller(vista);
     }
 
     private void cancelarBoletoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null,"En contruccion");
+        BuscarBoletoView vista = new BuscarBoletoView("Cancelar Boleto");
+        Controller controller = new Controller(vista);
     }
 
     private void registrarBoletoMenuActionPerformed(java.awt.event.ActionEvent evt) {
     }
-
-    @Override
-    public void windowActivated(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowClosed(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowClosing(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowIconified(WindowEvent arg0) {
-    }
-
-    @Override
-    public void windowOpened(WindowEvent arg0) {
-    }
-
-    // Variables declaration - do not modify
-    private JMenuItem boletoInternacionalMenuItem;
-    private JMenuItem boletoNacionalMenuItem;
-    private JMenu buscarBoletoMenu;
-    private JMenu fileMenu;
-    private JLabel fondoLabel;
-    private JMenuItem imprimirBoletoMenuItem;
-    private JMenuItem cancelarBoletoMenuItem;
-    private JMenuBar jMenuBar1;
-    private JMenuItem jMenuItem4;
-    private JMenu registrarBoletoMenu;
-    private JMenuItem salirMenuItem;
 }

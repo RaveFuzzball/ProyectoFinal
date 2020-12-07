@@ -9,11 +9,7 @@
 
 package Modelo;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 
 public abstract class Boleto implements Serializable {
     public static int numBoletos;
@@ -51,7 +47,7 @@ public abstract class Boleto implements Serializable {
         String destino) {
         this.clasePasajero = clasePasajero;
         this.edadPasajero = edadPasajero;
-  this.folio = ++Boleto.numBoletos;
+        this.folio = Boleto.numBoletos++;
         this.numAsiento = numAsiento;
         this.numVuelo = numVuelo;
         this.aerolinea = aerolinea;
@@ -184,6 +180,36 @@ public abstract class Boleto implements Serializable {
         throw new Exception("¡Error! La carpeta indicada no existe.");
       } catch (IOException e) {
         throw new Exception("¡Error! No se ha podido guardar.");
+      }
+    }
+
+    /**
+     * Elimina el archivo asociado al boleto en la carpeta actual.
+     *
+     * @throws Exception si no encuentra el archivo.
+    */
+    public void eliminar() throws Exception {
+      this.eliminar("./"); // "./" es la dirección relativa a la carpeta actual.
+    }
+
+    /**
+     * Elimina el archivo asociado al boleto en la carpeta con la dirección dada..
+     *
+     * @throws Exception si no encuentra el archivo.
+    */
+    public void eliminar(String dir) throws Exception {
+      if (!dir.endsWith("/")) {
+       dir += "/";
+      } 
+      String archivo = String.format ("%s%s_%s.vuelo",
+          dir,
+          this.tipoVuelo.toString().toLowerCase(),
+          this.nombrePasajero.replace(" ", ""));
+      try {
+        File f = new File (archivo);
+        f.delete ();
+      } catch (Exception e) {
+        throw new Exception ("¡Error! No se ha podido eliminar el archivo.");
       }
     }
 }

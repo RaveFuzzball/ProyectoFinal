@@ -16,13 +16,13 @@ Alejandro Tonatiuh García Espinoza
 
 
 public class RegistroEquipajeView {
-    private JFrame mainFrame;
+    public JFrame mainFrame;
     private JPanel panelNorthEast;
     private JPanel panelSouthEast;
     private JPanel panelEast;
     private JLabel backgroundLabel;
-    private JButton botonEnviar = new JButton("Enviar");
-    private JButton botonAgregarMaleta = new JButton("Agregar Maleta");
+    public JButton botonEnviar = new JButton("Enviar");
+    public JButton botonAgregarMaleta = new JButton("Agregar Maleta");
     private MaletaView[] maletaViews;
     private int maletaCount = 0;
 
@@ -118,9 +118,6 @@ public class RegistroEquipajeView {
         }
     }
 
-    public void addEnviarBoton(ActionListener enviarBotonListener) {
-        this.botonEnviar.addActionListener(enviarBotonListener);
-    }
 
     public void mostrarError(String mensajeError) {
         JOptionPane.showMessageDialog(mainFrame, mensajeError);
