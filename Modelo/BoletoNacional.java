@@ -23,7 +23,7 @@ public class BoletoNacional extends Boleto {
      * @param numVuelo	el número de vuelo.
      * @param aerolinea		la aerolínea.
      * @param destino	el destino del pasajero.
-     * @param curp	el curp del pasajero.
+     * @param curpPasajero	el curp del pasajero.
      */
     public BoletoNacional(String nombrePasajero,
                           int edadPasajero,
