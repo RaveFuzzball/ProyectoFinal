@@ -17,9 +17,11 @@ public class Maleta {
      *
      * @return el exceso de peso.
      */
-    private double calcularExceso() {
-        if (this.peso > 23)
-            return this.peso - 23;
+    private double calcularExceso ()throws Exception {
+            if (this.peso > 23 && this.peso <= 43)
+                return this.peso - 23;
+            else if (this.peso > 43)
+                throw new Exception("¡Asegurese que ninguna de sus maletas pese mas de 43kg!");
         return 0;
     }
 
@@ -28,9 +30,10 @@ public class Maleta {
      *
      * @return el total a pagar por el exceso de peso.
      */
-    public double obtenerTotal() {
+    public double obtenerTotal() throws Exception {
         double exceso = this.calcularExceso();
-        if (exceso <= 10) return exceso * 300;
+        if (exceso <= 10)
+            return exceso * 300;
         return exceso * 500;
     }
 }

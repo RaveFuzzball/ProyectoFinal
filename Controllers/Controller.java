@@ -248,7 +248,7 @@ class RegistroController implements ActionListener{
             }catch (NumberFormatException a){
                 JOptionPane.showMessageDialog(null,"Error, en los datos");
             }catch (Exception b){
-                JOptionPane.showMessageDialog(null,"Ha ocurrido un error");
+                JOptionPane.showMessageDialog(null,b.getMessage());
             }
             vista.mainFrame.dispose();
         }
