@@ -115,7 +115,7 @@ public class BoletoInternacional extends Boleto {
                 this.numPasaporte,
                 "Años de Vigencia de VISA",
                 this.añosVigenciaVisa,
-                "Su FOLIO",
+                "SU FOLIO",
                 this.folio);
     }
 }
