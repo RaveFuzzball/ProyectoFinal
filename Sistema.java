@@ -6,11 +6,16 @@ Alejandro Tonatiuh García Espinoza
 */
 import Controllers.Controller;
 import GUI.MenuView;
-import Modelo.ListaLigada;
+
+import java.io.File;
 
 public class Sistema {
     public static void main(String[] args) {
-        Controller.lista.insertarBoletosPorCarpeta("Boletos");
+        File boletosDir = new File("Boletos/");
+        if (!boletosDir.exists()) {
+          boletosDir.mkdir();
+        }
+        Controller.lista.insertarBoletosPorCarpeta(boletosDir.getPath());
         MenuView menu = new MenuView();
         menu.setVisible(true);
     }
